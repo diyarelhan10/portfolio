@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diya Relhan | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    
+    <style>
+        @font-face {
+            font-family: 'Soria';
+            src: url('https://fonts.cdnfonts.com/s/16218/Soria-Font.woff') format('woff');
+            font-weight: normal; font-style: normal;
+        }
+
+        body { font-family: 'Soria', serif; background-color: #050505; color: #cbd5e1; scroll-behavior: smooth; cursor: none; overflow-x: hidden; padding: 40px 20px; }
+        
+        .dashboard-container { display: flex; max-width: 1350px; margin: 0 auto; gap: 25px; align-items: flex-start; position: relative; }
+        .sidebar { width: 300px; background: #121212; border: 1px solid #222; border-radius: 30px; padding: 40px 30px; position: sticky; top: 40px; text-align: center; }
+        .content-area { flex: 1; background: #121212; border: 1px solid #222; border-radius: 30px; padding: 60px; position: relative; }
+
+        .top-nav { position: absolute; top: 0; right: 0; background: #1e1e1e; border-bottom: 1px solid #222; border-left: 1px solid #222; border-radius: 0 30px 0 30px; padding: 20px 40px; display: flex; gap: 30px; z-index: 50; flex-wrap: wrap; justify-content: flex-end; }
+        .nav-item { font-size: 11px; font-weight: 700; color: #888; text-transform: uppercase; tracking: 1.5px; transition: 0.3s; }
+        .nav-item:hover { color: #f472b6; }
+
+        .text-holographic {
+            background: linear-gradient(45deg, #f472b6, #db2777, #9333ea, #22d3ee, #f472b6);
+            background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: holo-shift 5s linear infinite;
+        }
+        @keyframes holo-shift { to { background-position: 200% center; } }
+        
+        .sparkle { position: absolute; width: 8px; height: 8px; background: #f472b6; border-radius: 50%; pointer-events: none; z-index: 9999; animation: sparkle-fade 1s ease-out forwards; box-shadow: 0 0 10px #f472b6, 0 0 20px #db2777; }
+        @keyframes sparkle-fade { 0% { opacity: 1; transform: scale(1.2); } 100% { opacity: 0; transform: scale(0.2) translateY(20px); } }
+
+        .progress-bar { height: 6px; background: #222; border-radius: 10px; overflow: hidden; margin-top: 8px; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #22d3ee, #f472b6); border-radius: 10px; }
+        .timeline-item { position: relative; padding-left: 30px; border-left: 1px solid #222; margin-bottom: 35px; }
+        .timeline-dot { position: absolute; left: -5.5px; top: 5px; width: 10px; height: 10px; background: #f472b6; border-radius: 50%; box-shadow: 0 0 8px #f472b6; }
+        
+        .section-box { border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 25px; padding: 30px; margin-bottom: 40px; transition: 0.3s; }
+        .section-box:hover { border-color: rgba(244, 114, 182, 0.2); }
+
+        .photo-box { width: 160px; height: 160px; margin: 0 auto 30px; border-radius: 40px; overflow: hidden; border: 2px solid #222; background: #1e1e1e; }
+        .photo-box img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
+
+        .sidebar-illustration { width: 100%; margin-top: 30px; border-radius: 20px; transition: 0.3s; }
+
+        .achievement-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; padding: 20px; transition: 0.3s; margin-bottom: 15px; }
+        .achievement-card:hover { border-color: #f472b6; transform: translateY(-3px); }
+
+        .skill-badge { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); padding: 5px 15px; border-radius: 50px; font-size: 12px; margin-bottom: 8px; display: inline-block; transition: 0.3s; }
+        .skill-badge:hover { border-color: #f472b6; color: #f472b6; }
+
+        /* Sidebar Resume Button */
+        .sidebar-resume-btn { margin-top: 20px; padding: 12px 25px; background: linear-gradient(45deg, #f472b6, #9333ea); color: white; font-weight: 800; border-radius: 15px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; transition: 0.4s; display: block; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        .sidebar-resume-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(244, 114, 182, 0.3); filter: brightness(1.1); }
+
+        input, textarea { background: rgba(255, 255, 255, 0.02) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; color: white !important; }
+        input:focus, textarea:focus { border-color: #f472b6 !important; outline: none; }
+    </style>
+</head>
+<body>
+
+    <div id="cursor-follower" class="fixed top-0 left-0 w-8 h-8 border border-pink-500 rounded-full pointer-events-none z-[10000] mix-blend-screen transition-transform duration-75"></div>
+
+    <div class="dashboard-container">
+        <aside class="sidebar" data-aos="fade-right">
+            <div class="photo-box">
+                <img src="image_a25b11.jpg" alt="Diya Relhan">
+            </div>
+            <h1 class="text-2xl font-black text-white mb-2">Diya Relhan</h1>
+            <p class="bg-white/5 text-[10px] text-holographic font-black py-1.5 px-4 rounded-xl inline-block uppercase tracking-widest mb-8">Computer Science Student</p>
+            
+            <div class="text-left space-y-5 pt-8 border-t border-white/5">
+                <a href="mailto:diyarelhan2005@gmail.com" class="flex items-center gap-4 hover:brightness-125 transition">
+                    <i class="fas fa-envelope text-pink-500 text-xs"></i><div class="overflow-hidden"><p class="text-[9px] text-slate-500 uppercase font-bold">Email</p><p class="text-[11px] text-white truncate">diyarelhan2005@gmail.com</p></div>
+                </a>
+                <a href="tel:+917015800456" class="flex items-center gap-4 hover:brightness-125 transition">
+                    <i class="fas fa-phone text-pink-500 text-xs"></i><div><p class="text-[9px] text-slate-500 uppercase font-bold">Phone</p><p class="text-[11px] text-white">+91 7015800456</p></div>
+                </a>
+                <a href="https://github.com/diyarelhan10" target="_blank" class="flex items-center gap-4 hover:brightness-125 transition">
+                    <i class="fab fa-github text-pink-500 text-xs"></i><div><p class="text-[9px] text-slate-500 uppercase font-bold">GitHub</p><p class="text-[11px] text-white">diyarelhan10</p></div>
+                </a>
+                <a href="https://linkedin.com/in/diyarelhan" target="_blank" class="flex items-center gap-4 hover:brightness-125 transition">
+                    <i class="fab fa-linkedin text-pink-500 text-xs"></i><div><p class="text-[9px] text-slate-500 uppercase font-bold">LinkedIn</p><p class="text-[11px] text-white">diyarelhan</p></div>
+                </a>
+            </div>
+
+            <img src="unnamed.jpg" class="sidebar-illustration" alt="Working illustration">
+
+            <a href="FINALRESUME.pdf" download class="sidebar-resume-btn"><i class="fas fa-file-download mr-2"></i> Download Resume</a>
+        </aside>
+
+        <main class="content-area" data-aos="fade-up">
+            <nav class="top-nav">
+                <a href="#about" class="nav-item">About</a>
+                <a href="#skills" class="nav-item">Skills</a>
+                <a href="#projects" class="nav-item">Projects</a>
+                <a href="#certifications" class="nav-item">Certifications</a>
+                <a href="#achievements" class="nav-item">Achievements</a>
+                <a href="#education" class="nav-item">Education</a>
+                <a href="#contact" class="nav-item">Contact Us</a>
+            </nav>
+
+            <section id="about" class="pt-16 mb-16 section-box">
+                <h2 class="text-6xl font-black text-white mb-6">Hello, I'm <br><span class="text-holographic">Diya Relhan</span></h2>
+                <h3 class="text-2xl font-bold text-white mb-10"><span id="typed"></span>_</h3>
+                <p class="text-slate-400 leading-relaxed text-lg max-w-2xl">
+                    I am a Computer Science student specializing in Data Science and Machine Learning. I build intelligent systems that turn complex data into actionable insights.
+                </p>
+            </section>
+
+            <section id="skills" class="section-box">
+                <h3 class="text-2xl font-bold text-white mb-10 flex items-center gap-4">Technical & Soft Skills <span class="h-[2px] w-12 bg-pink-500"></span></h3>
+                <div class="grid md:grid-cols-2 gap-x-12 gap-y-8 mb-10">
+                    <div><div class="flex justify-between text-[11px] font-bold uppercase tracking-wider"><span>Python, C++, Java, C</span><span>95%</span></div><div class="progress-bar"><div class="progress-fill" style="width: 95%"></div></div></div>
+                    <div><div class="flex justify-between text-[11px] font-bold uppercase tracking-wider"><span>Data Structures (DSA)</span><span>90%</span></div><div class="progress-bar"><div class="progress-fill" style="width: 90%"></div></div></div>
+                    <div><div class="flex justify-between text-[11px] font-bold uppercase tracking-wider"><span>Pandas & NumPy</span><span>92%</span></div><div class="progress-bar"><div class="progress-fill" style="width: 92%"></div></div></div>
+                    <div><div class="flex justify-between text-[11px] font-bold uppercase tracking-wider"><span>MySQL & Power BI</span><span>85%</span></div><div class="progress-bar"><div class="progress-fill" style="width: 85%"></div></div></div>
+                </div>
+                <div class="pt-6 border-t border-white/5">
+                    <h4 class="text-white font-bold mb-4 flex items-center gap-2"><i class="fas fa-users text-pink-500 text-sm"></i> Interpersonal strengths</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge">Problem Solving</span><span class="skill-badge">Leadership</span><span class="skill-badge">Team Collaboration</span><span class="skill-badge">Adaptability</span><span class="skill-badge">Critical Thinking</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="section-box">
+                <h3 class="text-2xl font-bold text-white mb-10 flex items-center gap-4">Projects <span class="h-[2px] w-12 bg-pink-500"></span></h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white/5 border border-white/5 rounded-3xl overflow-hidden cursor-pointer" onclick="window.open('https://ai-credit-scoring-system-erlppk4ny6jutxsfttwjka.streamlit.app/', '_blank')">
+                        <img src="img1.jpg" class="w-full h-44 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-white font-bold text-lg mb-1">LendShield</h4>
+                            <p class="text-[10px] text-pink-500 font-bold uppercase mb-3">AI Credit Risk Assessment</p>
+                            <p class="text-[11px] text-slate-400">Developed a real-time risk assessment model using Random Forest with 92.4% accuracy.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white/5 border border-white/5 rounded-3xl overflow-hidden cursor-pointer" onclick="window.open('https://github.com/diyarelhan10/Impact-of-Social-media-on-Mental-Health', '_blank')">
+                        <img src="img2.jpg" class="w-full h-44 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-white font-bold text-lg mb-1">Mental Health Dash</h4>
+                            <p class="text-[10px] text-pink-500 font-bold uppercase mb-3">ML Social Media Analysis</p>
+                            <p class="text-[11px] text-slate-400">ML dashboard tracking stress drivers like screen time and usage data.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white/5 border border-white/5 rounded-3xl overflow-hidden cursor-pointer" onclick="window.open('https://github.com/diyarelhan10/Financial-loan-dashboard', '_blank')">
+                        <img src="image_a2442d.png" class="w-full h-44 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-white font-bold text-lg mb-1">Financial Dashboard</h4>
+                            <p class="text-[10px] text-pink-500 font-bold uppercase mb-3">Power BI Visualization</p>
+                            <p class="text-[11px] text-slate-400">Analyzes loan status, financial trends, and regional metrics.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white/5 border border-white/5 rounded-3xl overflow-hidden cursor-pointer" onclick="window.open('https://github.com/diyarelhan10/Insights-and-Trends-In-Electric-Vehicle-Adoption', '_blank')">
+                        <img src="Screenshot 2026-03-22 at 1.23.21 PM.jpg" class="w-full h-44 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-white font-bold text-lg mb-1">EV Adoption Trends</h4>
+                            <p class="text-[10px] text-pink-500 font-bold uppercase mb-3">Data Insights Analysis</p>
+                            <p class="text-[11px] text-slate-400">Comprehensive study of EV market trends and adoption factors.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white/5 border border-white/5 rounded-3xl overflow-hidden cursor-pointer" onclick="window.open('https://github.com/diyarelhan10/Predictive-Analysis-of-Air-Pollution', '_blank')">
+                        <img src="image_a240ca.jpg" class="w-full h-44 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-white font-bold text-lg mb-1">Air Pollution Analysis</h4>
+                            <p class="text-[10px] text-pink-500 font-bold uppercase mb-3">Predictive Modeling</p>
+                            <p class="text-[11px] text-slate-400">Predictive analysis of environmental AQI and pollutant concentrations.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white/5 border border-white/5 rounded-3xl overflow-hidden cursor-pointer" onclick="window.open('https://github.com/diyarelhan10', '_blank')">
+                        <img src="img3.jpg" class="w-full h-44 object-cover">
+                        <div class="p-6">
+                            <h4 class="text-white font-bold text-lg mb-1">CPU Scheduler</h4>
+                            <p class="text-[10px] text-pink-500 font-bold uppercase mb-3">Energy-Aware C Algorithm</p>
+                            <p class="text-[11px] text-slate-400">A C-based energy-aware task scheduler simulating power consumption states.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="certifications" class="section-box">
+                <h3 class="text-2xl font-bold text-white mb-10 flex items-center gap-4">Certifications <span class="h-[2px] w-12 bg-pink-500"></span></h3>
+                <div class="grid gap-3 text-xs">
+                    <div class="p-4 bg-white/5 border border-white/5 rounded-2xl flex justify-between items-center transition hover:bg-white/10">
+                        <div><h4 class="text-white font-bold">Computational Theory: Language Principle & Finite Automata Theory</h4><p class="text-slate-500 uppercase">Infosys Springboard | Dec 2025</p></div><i class="fas fa-certificate text-pink-500"></i>
+                    </div>
+                    <div class="p-4 bg-white/5 border border-white/5 rounded-2xl flex justify-between items-center transition hover:bg-white/10">
+                        <div><h4 class="text-white font-bold">Master Generative AI & Generative AI tools (ChatGPT & more)</h4><p class="text-slate-500 uppercase">Udemy | Aug 2025</p></div><i class="fas fa-certificate text-pink-500"></i>
+                    </div>
+                    <div class="p-4 bg-white/5 border border-white/5 rounded-2xl flex justify-between items-center transition hover:bg-white/10">
+                        <div><h4 class="text-white font-bold">Build Generative AI Apps and Solutions with No-Code Tools</h4><p class="text-slate-500 uppercase">Udemy | Aug 2025</p></div><i class="fas fa-certificate text-pink-500"></i>
+                    </div>
+                    <div class="p-4 bg-white/5 border border-white/5 rounded-2xl flex justify-between items-center transition hover:bg-white/10">
+                        <div><h4 class="text-white font-bold">ChatGPT Made Easy: AI Essentials for Beginners</h4><p class="text-slate-500 uppercase">Udemy | Aug 2025</p></div><i class="fas fa-certificate text-pink-500"></i>
+                    </div>
+                    <div class="p-4 bg-white/5 border border-white/5 rounded-2xl flex justify-between items-center transition hover:bg-white/10">
+                        <div><h4 class="text-white font-bold">From Fear to NO Fear (Stage Fright)</h4><p class="text-slate-500 uppercase">LPU Training</p></div><i class="fas fa-certificate text-pink-500"></i>
+                    </div>
+                </div>
+            </section>
+
+            <section id="achievements" class="section-box">
+                <h3 class="text-2xl font-bold text-white mb-10 flex items-center gap-4">Achievements <span class="h-[2px] w-12 bg-pink-500"></span></h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="achievement-card"><i class="fas fa-medal text-pink-500 mb-3"></i><h4 class="text-white font-bold text-sm">Leadership Bootcamp</h4><p class="text-pink-500 text-[10px] font-bold uppercase">Second Place | Jan '25</p></div>
+                    <div class="achievement-card"><i class="fas fa-microphone text-pink-500 mb-3"></i><h4 class="text-white font-bold text-sm">Group Discussion</h4><p class="text-pink-500 text-[10px] font-bold uppercase">Second Prize | Feb '25</p></div>
+                    <div class="achievement-card"><i class="fas fa-code text-pink-500 mb-3"></i><h4 class="text-white font-bold text-sm">LeetCode</h4><p class="text-pink-500 text-[10px] font-bold uppercase">100+ Problems Solved</p></div>
+                </div>
+            </section>
+
+            <section id="education" class="section-box">
+                <h3 class="text-2xl font-bold text-white mb-10 flex items-center gap-4">Education <span class="h-[2px] w-12 bg-pink-500"></span></h3>
+                <div class="timeline-item"><div class="timeline-dot"></div><h4 class="text-white font-bold text-sm">Lovely Professional University</h4><span class="text-pink-500 text-[10px] font-bold">2023 — 2027</span><p class="text-xs text-slate-500 mt-1">B.Tech in CSE | CGPA: 7.2 | Phagwara, Punjab</p></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><h4 class="text-white font-bold text-sm">SBS Public School</h4><span class="text-pink-500 text-[10px] font-bold">2021 — 2023</span><p class="text-xs text-slate-500 mt-1">Intermediate | Percentage: 72% | Karnal, Haryana</p></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><h4 class="text-white font-bold text-sm">Bal Vikas School</h4><span class="text-pink-500 text-[10px] font-bold">2020 — 2021</span><p class="text-xs text-slate-500 mt-1">Matriculation | Percentage: 89% | Panipat, Haryana</p></div>
+            </section>
+
+            <section id="contact" class="section-box">
+                <h3 class="text-2xl font-bold text-white mb-10 flex items-center gap-4">Contact Us <span class="h-[2px] w-12 bg-pink-500"></span></h3>
+                <form class="grid grid-cols-2 gap-4">
+                    <input type="text" placeholder="Name" class="p-4 rounded-xl text-sm focus:border-pink-500 outline-none">
+                    <input type="email" placeholder="Email" class="p-4 rounded-xl text-sm focus:border-pink-500 outline-none">
+                    <textarea placeholder="Message" class="col-span-2 p-4 rounded-xl text-sm h-32 focus:border-pink-500 outline-none"></textarea>
+                    <button class="col-span-2 bg-white text-black py-4 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-pink-500 hover:text-white transition">Send Message</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        new Typed('#typed', { strings: ['Computer Science Student', 'Data Science Specialist', 'ML Enthusiast'], typeSpeed: 60, backSpeed: 40, loop: true });
+        const follower = document.getElementById('cursor-follower');
+        document.addEventListener('mousemove', (e) => {
+            follower.style.transform = `translate(${e.clientX - 16}px, ${e.clientY - 16}px)`;
+            for(let i=0; i<2; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = (e.pageX + (Math.random() * 20 - 10)) + 'px';
+                sparkle.style.top = (e.pageY + (Math.random() * 20 - 10)) + 'px';
+                document.body.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 1000);
+            }
+        });
+    </script>
+</body>
+</html>
